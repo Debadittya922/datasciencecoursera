@@ -1,0 +1,24 @@
+CacheMatrix<-function(y=matrix()){
+  inv_1<-NULL
+  set_1<-function(x){
+    y<<-x
+    inv_1<-NULL
+  } 
+  get_1<-function()
+    inverse_set_1<-function(inverse) 
+      inv_1<<-inverse_set_1
+  inverse_get_1<-function()
+    inv_1
+  list(set_1=set_1,get_1=get_1,inverse_set_1=inverse_set_1,inverse_get_1=inverse_get_1)
+}
+Inverse_Cache<-function(y,s){
+  inv_1<-y$inverse_get_1()
+  if(!is.null(inv_1)){
+    message("cached data")
+    return(inv_1)
+  }
+  invert_matrix<-y$get()
+  inv_1<-solve(invert_matrix,s)
+  y$inverse
+}
+
